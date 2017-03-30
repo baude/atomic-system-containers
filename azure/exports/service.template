@@ -4,7 +4,8 @@ Wants=network-online.target sshd.service sshd-keygen.service
 After=network-online.target
 
 [Service]
-Environment=PYTHONPATH=/var/lib/containers/atomic/wala-container.0/rootfs/usr/lib/python2.7/site-packages/
+Environment=PYTHONPATH=$DESTDIR/rootfs/usr/lib/python2.7/site-packages/
+Environment=WALA_ROOT=$DESTDIR/rootfs
 ExecStart=/usr/bin/python  -u usr/sbin/waagent -daemon
 Restart=always
 RestartSec=5
